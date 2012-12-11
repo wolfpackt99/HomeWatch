@@ -1,5 +1,6 @@
 [assembly: WebActivator.PreApplicationStartMethod(typeof(TDJ.Homewatch.Web.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(TDJ.Homewatch.Web.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivator.PostApplicationStartMethod(typeof(TDJ.Homewatch.Web.App_Start.NinjectWebCommon), "PostApplicationStart")]
 
 namespace TDJ.Homewatch.Web.App_Start
 {
@@ -11,7 +12,11 @@ namespace TDJ.Homewatch.Web.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using TDJ.HomeWatch.Business;
-    using EasyNetQ;
+    using Microsoft.AspNet.SignalR;
+    using Microsoft.AspNet.SignalR.Hosting;
+    using Microsoft.AspNet.SignalR.Infrastructure;
+    using TDJ.HomeWatch.Business.SignalR;
+    using System.Web.Routing;
 
     public static class NinjectWebCommon 
     {
@@ -25,6 +30,8 @@ namespace TDJ.Homewatch.Web.App_Start
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
+
+            RouteTable.Routes.MapHubs();
         }
         
         /// <summary>
@@ -33,6 +40,12 @@ namespace TDJ.Homewatch.Web.App_Start
         public static void Stop()
         {
             bootstrapper.ShutDown();
+        }
+
+        public static void PostApplicationStart()
+        {
+            var kernel = new StandardKernel();
+            GlobalHost.DependencyResolver = new NinjectDependencyResolver(kernel);
         }
         
         /// <summary>
@@ -55,8 +68,8 @@ namespace TDJ.Homewatch.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IBus>().ToMethod(_ => RabbitHutch.CreateBus(Config.RabbitUri));
-            kernel.Bind<INetQ>().To<NetQ>();
+            
+            kernel.Load(new MyModule());
         }        
     }
 }

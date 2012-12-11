@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNet.SignalR.Hubs;
+﻿using EasyNetQ;
+using Microsoft.AspNet.SignalR.Hubs;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +14,17 @@ namespace TDJ.HomeWatch.Business.SignalR
     {
         public void Send(string message)
         {
+            var rb = RabbitHutch.CreateBus(string.Format("host={0}", Config.RabbitUri));
+            using (var ch = rb.OpenPublishChannel())
+            {
+                ch.Publish<string>(message);
+            }
             Clients.All.addMessage(message);
+        }
+
+        public void ToConsole(string message)
+        {
+            Clients.All.fromServer(message);
         }
     }
 }

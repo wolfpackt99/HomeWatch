@@ -9,10 +9,10 @@
     <script type="text/javascript">
         $(function () {
             // Proxy created on the fly          
-            var chat = $.connection.InfoHub;
+            var info = $.connection.InfoHub;
 
             // Declare a function on the chat hub so the server can invoke it          
-            chat.client.addMessage = function (message) {
+            info.client.addMessage = function (message) {
                 $('#messages').append('<li>' + message + '</li>');
             };
 
@@ -20,7 +20,11 @@
             $.connection.hub.start().done(function() {
                 $("#broadcast").click(function () {
                     // Call the chat method on the server
-                    chat.server.send($('#msg').val());
+                    info.server.send($('#msg').val());
+                });
+
+                $("#codeBtn").click(function () {
+                    info.server.toConsole($('#codeTxt').val());
                 });
             });
         });
@@ -28,8 +32,11 @@
 }
   <div>
     <input type="text" id="msg" />
-<input type="button" id="broadcast" value="broadcast" />
-
+    <input type="button" id="broadcast" value="broadcast" />
 <ul id="messages">
 </ul>
   </div>
+<div>
+    <input type="text" id="codeTxt" />
+    <input type="button" id="codeBtn" value="enter" />
+</div>

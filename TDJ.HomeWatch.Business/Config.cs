@@ -27,5 +27,26 @@ namespace TDJ.HomeWatch.Business
                 }
             }        
         }
+
+        public static string SignalRUri
+        {
+            get
+            {
+                var str = ConfigurationSettings.AppSettings["SignalRUri"];
+                if (string.IsNullOrEmpty(str))
+                {
+                    throw new ArgumentNullException("SignalRUri", "value missing from settings file.");
+                }
+                else
+                {
+                    return str;
+                }
+            }
+        }
+
+        public static string ConsoleID
+        {
+            get { return "1111100000"; }
+        }
     }
 }

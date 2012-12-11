@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDJ.Homewatch.Web", "TDJ.Ho
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDJ.Homewatch.Web.Tests", "TDJ.Homewatch.Web.Tests\TDJ.Homewatch.Web.Tests.csproj", "{59754780-2881-4181-B5B4-319799F1115F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDJ.HomeWatch.Console", "..\TDJ.HomeWatch.Console\TDJ.HomeWatch.Console.csproj", "{A7725310-CA0D-4813-B080-0ECB25D5D501}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDJ.HomeWatch.ConsoleApp", "..\TDJ.HomeWatch.Console\TDJ.HomeWatch.ConsoleApp.csproj", "{A7725310-CA0D-4813-B080-0ECB25D5D501}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDJ.HomeWatch.Business", "TDJ.HomeWatch.Business\TDJ.HomeWatch.Business.csproj", "{329CD6AF-D879-4BF1-ADC2-668FDF0A52DD}"
 EndProject

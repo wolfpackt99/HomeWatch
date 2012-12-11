@@ -59,10 +59,13 @@
     <Compile Include="Config.cs" />
     <Compile Include="INetQ.cs" />
     <Compile Include="NetQ.cs" />
+    <Compile Include="MyModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QRequest.cs" />
     <Compile Include="QResponse.cs" />
+    <Compile Include="SignalR\CustomBus.cs" />
     <Compile Include="SignalR\Info.cs" />
+    <Compile Include="SignalR\NinjectDependencyResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

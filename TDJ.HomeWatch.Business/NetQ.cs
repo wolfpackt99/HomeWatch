@@ -1,19 +1,15 @@
 ﻿using EasyNetQ;
 using Ninject;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel.Composition;
 
 namespace TDJ.HomeWatch.Business
 {
-    [Export(typeof(INetQ))]
     public class NetQ : INetQ
     {
         [Inject]
         public IBus Bus { get; set; }
+
+        
 
         public async Task Publish(QRequest item)
         {

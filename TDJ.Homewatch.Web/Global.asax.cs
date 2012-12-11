@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNet.SignalR;
+using Ninject;
+using RabbitMQ.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,6 +10,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
+
 namespace TDJ.Homewatch.Web
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
@@ -14,6 +18,7 @@ namespace TDJ.Homewatch.Web
 
     public class MvcApplication : System.Web.HttpApplication
     {
+        private static ConnectionFactory factory = new ConnectionFactory();
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
