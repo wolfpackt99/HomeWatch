@@ -13,16 +13,13 @@ namespace TDJ.HomeWatch.Business
         {
             get 
             {
-                var str = ConfigurationSettings.AppSettings["RabbitUri"];
+                var str = ConfigurationSettings.AppSettings["CLOUDAMQP_URL"];
                 if (string.IsNullOrEmpty(str))
                 {
-                    return "localhost";
+                    throw new ArgumentNullException("CLOUDAMQP_URL", "value missing from settings file.");
                 }
                 else
                 {
-#if DEBUG
-                    str = "localhost";
-#endif
                     return str;
                 }
             }        
