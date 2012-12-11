@@ -24,7 +24,7 @@ namespace TDJ.HomeWatch.Business.SignalR
 
         public void ToConsole(string message)
         {
-            Clients.Client(Config.ConsoleID).fromServer(message);
+            Clients.All.fromServer(message);
         }
     }
 }
