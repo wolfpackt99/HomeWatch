@@ -14,11 +14,11 @@ namespace TDJ.HomeWatch.Business.SignalR
     {
         public void Send(string message)
         {
-            var rb = RabbitHutch.CreateBus(string.Format("host={0}", Config.RabbitUri));
-            using (var ch = rb.OpenPublishChannel())
-            {
-                ch.Publish<string>(message);
-            }
+            //var rb = RabbitHutch.CreateBus(string.Format("host={0}", Config.RabbitUri));
+            //using (var ch = rb.OpenPublishChannel())
+            //{
+            //    ch.Publish<string>(message);
+            //}
             Clients.All.addMessage(message);
         }
 
