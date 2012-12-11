@@ -64,7 +64,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HomeWatch\TDJ.HomeWatch.Business\TDJ.HomeWatch.Business.csproj">
+    <ProjectReference Include="..\TDJ.HomeWatch.Business\TDJ.HomeWatch.Business.csproj">
       <Project>{329cd6af-d879-4bf1-adc2-668fdf0a52dd}</Project>
       <Name>TDJ.HomeWatch.Business</Name>
     </ProjectReference>
