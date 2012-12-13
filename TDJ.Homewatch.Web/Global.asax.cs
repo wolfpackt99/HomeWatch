@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.SignalR;
+﻿using EasyNetQ;
+using Microsoft.AspNet.SignalR;
 using Ninject;
 using RabbitMQ.Client;
 using System;
@@ -9,6 +10,8 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using TDJ.HomeWatch.Business.SignalR;
+using TDJ.HomeWatch.Business.SignalR;
 
 
 namespace TDJ.Homewatch.Web
@@ -21,6 +24,9 @@ namespace TDJ.Homewatch.Web
         private static ConnectionFactory factory = new ConnectionFactory();
         protected void Application_Start()
         {
+           
+            RouteTable.Routes.MapHubs();
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);

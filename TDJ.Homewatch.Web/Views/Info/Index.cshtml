@@ -11,22 +11,23 @@
             // Proxy created on the fly          
             var info = $.connection.InfoHub;
 
-            // Declare a function on the chat hub so the server can invoke it          
-            info.client.addMessage = function (message) {
+            info.client.sendMessage = function (message) {
                 $('#messages').append('<li>' + message + '</li>');
             };
 
             // Start the connection
-            $.connection.hub.start().done(function() {
+            $.connection.hub.start().done(function () {
+                info.invoke('subscribe', 'Product');
+                $('#messages').append('<li>invoked subscribe</li>');
                 $("#broadcast").click(function () {
                     // Call the chat method on the server
-                    info.server.send($('#msg').val());
+                    info.invoke('publish', $("#msg").val(), 'Product');
                 });
 
-                $("#codeBtn").click(function () {
-                    info.server.toConsole($('#codeTxt').val());
-                });
             });
+
+            
+            
         });
     </script>
 }

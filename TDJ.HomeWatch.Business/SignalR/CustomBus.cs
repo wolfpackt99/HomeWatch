@@ -1,5 +1,6 @@
 ﻿using EasyNetQ;
 using Microsoft.AspNet.SignalR;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,30 +9,34 @@ using System.Threading.Tasks;
 
 namespace TDJ.HomeWatch.Business.SignalR
 {
-    //public class CustomBus : IMessageBus
-    //{
-    //    private IBus _bus;
-    //    #region IMessageBus Members
-    //    public CustomBus() {
-    //        _bus = RabbitHutch.CreateBus(string.Format("host={0}"));
-    //    }
+    public class CustomBus : ScaleoutMessageBus
+    {
+        readonly IBus _bus;
+        public CustomBus(IDependencyResolver resolver, IBus bus)
+            : base(resolver)
+        {
+            _bus = bus;
+        }
 
-    //    public Task Publish(Message message)
-    //    {
-    //        return Task.Factory.StartNew(() => {
-    //            using (var channel = _bus.OpenPublishChannel())
-    //            {
-    //                channel.Publish<Message>(message);
-    //            }    
-    //        });
-    //    }
+        protected override Task Send(Message[] messages)
+        {   
+            IEnumerable<Task> result;
+            result = messages.Select(s => Task.Factory.StartNew(() => 
+            {
+                try
+                {
+                    using (var ch = _bus.OpenPublishChannel())
+                    {
+                        ch.Publish<Message>(s);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
 
-    //    public IDisposable Subscribe(ISubscriber subscriber, string cursor, Func<MessageResult, Task<bool>> callback, int maxMessages)
-    //    {
-
-    //        _bus.
-    //    }
-
-    //    #endregion
-    //}
+            }));
+            return Task.WhenAll(result);
+        }
+    }
 }

@@ -6,10 +6,13 @@ namespace TDJ.HomeWatch.Business
 {
     public class NetQ : INetQ
     {
-        [Inject]
         public IBus Bus { get; set; }
 
-        
+        [Inject]
+        public NetQ(IBus bus)
+        {
+            Bus = bus;
+        }
 
         public async Task Publish(QRequest item)
         {

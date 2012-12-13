@@ -66,6 +66,7 @@
     <Compile Include="QRequest.cs" />
     <Compile Include="QResponse.cs" />
     <Compile Include="SignalR\CustomBus.cs" />
+    <Compile Include="SignalR\DependencyResolverExtensions.cs" />
     <Compile Include="SignalR\Info.cs" />
     <Compile Include="SignalR\NinjectDependencyResolver.cs" />
   </ItemGroup>
