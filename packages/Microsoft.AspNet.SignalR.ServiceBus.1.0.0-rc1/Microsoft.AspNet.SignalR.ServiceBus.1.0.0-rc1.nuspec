@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.AspNet.SignalR.ServiceBus</id>
+    <version>1.0.0-rc1</version>
+    <title>Microsoft ASP.NET SignalR ServiceBus Libraries</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/aspnet_and_web_tools_2012_EULA_ENU.htm</licenseUrl>
+    <projectUrl>http://www.asp.net/signalR</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Enables scale-out of SignalR applications in a web-farm using Service Bus as a messaging backplane.</description>
+    <language>en-US</language>
+    <tags>Microsoft AspNet SignalR AspNetSignalR ServiceBus</tags>
+    <dependencies>
+      <dependency id="Microsoft.AspNet.SignalR.Core" version="1.0.0-rc1" />
+      <dependency id="WindowsAzure.ServiceBus" version="1.8.0.0" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,5 +1,4 @@
-﻿using EasyNetQ;
-using Ninject;
+﻿using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,22 +13,9 @@ namespace TDJ.Homewatch.Web.Controllers
     {
         //
         // GET: /Info/
-        [Inject]
-        public INetQ Que { get; set; }
-
         public async Task<ActionResult> Index()
         {
             return View();
         }
-
-        [HttpPost]
-        public async Task Index(QRequest item) 
-        {
-            if (ModelState.IsValid)
-            {
-                await Que.Publish(item);
-            }
-        }
-
     }
 }

@@ -4,24 +4,29 @@
 }
 
 @section Scripts { 
-    <script src="~/Scripts/jquery.signalR-1.0.0-alpha2.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.signalR-1.0.0-rc1.min.js" type="text/javascript"></script>
     <script src="/signalr/hubs" type="text/javascript"></script>
     <script type="text/javascript">
         $(function () {
             // Proxy created on the fly          
-            var info = $.connection.InfoHub;
+            var info = $.connection.info;
 
             info.client.sendMessage = function (message) {
                 $('#messages').append('<li>' + message + '</li>');
             };
 
+            $("#sub").click(function () {
+                info.server.subscribe("Product");
+                $('#messages').append('<li>invoked subscribe</li>');
+            });
+
             // Start the connection
             $.connection.hub.start().done(function () {
-                info.invoke('subscribe', 'Product');
-                $('#messages').append('<li>invoked subscribe</li>');
+                
                 $("#broadcast").click(function () {
                     // Call the chat method on the server
-                    info.invoke('publish', $("#msg").val(), 'Product');
+                    info.server.publish($("#msg").val(), "Product");
+                    //info.invoke('publish', $("#msg").val(), 'Product');
                 });
 
             });
@@ -38,6 +43,5 @@
 </ul>
   </div>
 <div>
-    <input type="text" id="codeTxt" />
-    <input type="button" id="codeBtn" value="enter" />
+    <input type="button" id="sub" value="subscribe" />
 </div>

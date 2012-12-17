@@ -1,26 +1,13 @@
-﻿using EasyNetQ;
+﻿
 using Microsoft.AspNet.SignalR.Hubs;
-using Ninject;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace TDJ.HomeWatch.Business.SignalR
 {
-
-
-    [HubName("InfoHub")]
     public class Info : Hub
     {
-        public INetQ Que { get; set; }
-
-        [Inject]
-        public Info(INetQ que)
-        {
-            Que = que;
-        }
+        
 
         public void Subscribe(string groupName)
         {
@@ -34,9 +21,15 @@ namespace TDJ.HomeWatch.Business.SignalR
         }
         public void Publish(string message, string groupName)
         {
-            //Clients.Group(groupName).sendMessage(message);
-            Clients.All.sendMessage(message);
+            Clients.Group(groupName).sendMessage(message);
+            //Clients.All.sendMessage(message);
 
+        }
+
+        public override Task OnDisconnected()
+        {
+            Clients.All.onDisconnected(Context.ConnectionId);
+            return base.OnDisconnected();
         }
     }
 }

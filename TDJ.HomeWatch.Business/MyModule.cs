@@ -1,4 +1,4 @@
-﻿using EasyNetQ;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +17,7 @@ namespace TDJ.HomeWatch.Business
         //}
         public override void Load()
         {
-            Bind<IBus>().ToMethod(_ => RabbitHutch.CreateBus(string.Format("host={0}", Config.RabbitUri))).InSingletonScope();
-            Bind<INetQ>().To<NetQ>();
+            
         }
     }
 }
