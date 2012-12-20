@@ -50,8 +50,9 @@
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="SignalR.RabbitMQ">
-      <HintPath>..\..\SignalR.RabbitMq\SignalR.RabbitMQ\bin\Debug\SignalR.RabbitMQ.dll</HintPath>
+    <Reference Include="SignalR.RabbitMQ, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\SignalR.RabbitMQ.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />

@@ -98,7 +98,7 @@
     </Reference>
     <Reference Include="SignalR.RabbitMQ, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\SignalR.RabbitMq\SignalR.RabbitMQ\bin\Debug\SignalR.RabbitMQ.dll</HintPath>
+      <HintPath>..\Lib\SignalR.RabbitMQ.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

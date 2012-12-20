@@ -20,6 +20,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDJ.Ad2Usb.Library", "TDJ.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDJ.Ad2Usb.Library.Tests", "TDJ.Ad2Usb.Library.Tests\TDJ.Ad2Usb.Library.Tests.csproj", "{865B666C-57FE-4B21-8CBD-60AD1A3E77D7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{A3F25EF0-ED3E-4A5A-9E18-3546254A893B}"
+	ProjectSection(SolutionItems) = preProject
+		Lib\SignalR.RabbitMQ.dll = Lib\SignalR.RabbitMQ.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
