@@ -45,9 +45,7 @@ namespace TDJ.Ad2Usb.Library.Tests
             var parser = new MessageParser{
                 Logger = logMock.Object
             };
-            Message expectedResult = new Message { 
-            
-            };
+            Message expectedResult = null;
 
             var result = parser.Process(message);
 
