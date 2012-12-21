@@ -15,6 +15,7 @@ namespace TDJ.Homewatch.Web.Controllers
         // GET: /Info/
         public async Task<ActionResult> Index()
         {
+            new LogEvent("entered InfoController Index").Raise();
             return View();
         }
     }
